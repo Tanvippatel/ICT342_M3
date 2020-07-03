@@ -4,6 +4,10 @@ Tanvi Patel 1119565_ICT342_M3_TASK3
 This project is made with angular 7, node.js and express with data saving in google firebase
 You have to check if node modules have been extracted or not, and if not extract it in both folders(i.e. backend and frontend)
 
+also in github empty files are not supported therefore for uploading 2 files we had to put empty folders which needs to be deleted before running the project or else it will create an error. these files are,
+1. ICT342_M3/frontend/crm-editor-form/src/assets/todeletefile.txt (DELETE THE WHOLE FILE)
+2. ICT342_M3/frontend/crm-editor-form/src/app/app.component.css (to delete the commented text only "DELETE IT")
+
 when you do it go to visual studio compiler and open the whole folder of project through add workspace.
 when done, right-click backend and select open in terminal.
 write npm install (note that when done it changes powershell/zsh to node [this means succesful])
