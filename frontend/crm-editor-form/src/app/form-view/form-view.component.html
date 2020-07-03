@@ -1,0 +1,65 @@
+<div class="container back-ground">
+    <h2 class="mt-3 mg-3">Please fill the form</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <table class="table ">
+            <ng-container formArrayName="inputFields">
+                <tr *ngFor="let control of inputFields().controls; let i=index">
+                    <td [formGroupName]="i" *ngIf="control.controls.type.value === 'name'">
+                        {{control.controls.label.value}}:
+                        <input type="text" formControlName="value" class="form-control">
+                        <span class="error-txt"
+                            *ngIf="control.controls.value.invalid && (control.controls.value.touched || form.submitted)">
+                            {{getErrorMessage(control.controls.value)}}</span>
+                    </td>
+
+                    <td class="radio" [formGroupName]="i" *ngIf="control.controls.type.value === 'radio'">
+                        {{control.controls.label.value}}:
+                        <div class="mt-3">
+                            <label class="mr-5">
+                                <input type="radio" value="male" formControlName="value" class="form-control">
+                                Male
+                            </label>
+                            <label>
+                                <input type="radio" value="female" formControlName="value" class="form-control">
+                                Female
+                            </label>
+                        </div>
+                        <span class="error-txt"
+                            *ngIf="control.controls.value.invalid && (control.controls.value.touched || form.submitted)">
+                            {{getErrorMessage(control.controls.value)}}</span>
+                    </td>
+
+                    <td [formGroupName]="i" *ngIf="control.controls.type.value === 'email'">
+                        {{control.controls.label.value}}:
+                        <input type="text" formControlName="value" class="form-control">
+                        <span class="error-txt"
+                            *ngIf="control.controls.value.invalid && (control.controls.value.touched || form.submitted)">
+                            {{getErrorMessage(control.controls.value)}}</span>
+                    </td>
+
+                    <td [formGroupName]="i" *ngIf="control.controls.type.value === 'phone'">
+                        {{control.controls.label.value}}:
+                        <input type="text" mask="(000) 000-0000" placeholder="xx-xxxx-xxxx" formControlName="value"
+                            class="form-control">
+                        <span class="error-txt"
+                            *ngIf="control.controls.value.invalid && (control.controls.value.touched || form.submitted)">
+                            {{getErrorMessage(control.controls.value)}}</span>
+                    </td>
+                    <td [formGroupName]="i" *ngIf="control.controls.type.value === 'textarea'">
+                        {{control.controls.label.value}}:
+                        <textarea class="form-control" formControlName="value"></textarea>
+                        <span class="error-txt"
+                            *ngIf="control.controls.value.invalid && (control.controls.value.touched || form.submitted)">
+                            {{getErrorMessage(control.controls.value)}}</span>
+                    </td>
+                </tr>
+            </ng-container>
+        </table>
+        <button *ngIf="!editForm" type="submit" [disabled]="!form.get('inputFields').valid"
+            class="btn btn-success">Submit</button>
+
+    </form>
+
+    <br />
+</div>
